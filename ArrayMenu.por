@@ -14,7 +14,7 @@
 
 programa {
   funcao inicio() {
-    inteiro vetor[15], i, menu = 2, opcao = 0, indice, valor, decidir = 0
+    inteiro vetor[15], i, menu = 2, opcao = 0, indice, valor, valor2, decidir = 0
  
     escreva("'1' Para começar, '0' Para sair:  ")
       leia(menu)
@@ -32,30 +32,84 @@ programa {
       escreva("Digite a opção desejada:  ")
         leia(opcao)
 
-      enquanto(opcao==1){
-        opcao = 2
+        enquanto(opcao==1){
+          opcao = 6
 
-        escreva("Qual dos índices de 1 a 15 você deseja cadastrar?:  ")
-          leia(indice)
-        escreva("Qual valor você quer cadastrar?:  ")
-          leia(valor)
-        vetor[indice] = valor
-        escreva("**** O índice ",indice, " Agora guarda o valor ", valor, "!! ****")
+          escreva("Qual dos índices de 0 a 15 você deseja cadastrar?:  ")
+            leia(indice)
+          escreva("Qual valor você quer cadastrar?:  ")
+            leia(valor)
+          vetor[indice] = valor
+          escreva("**** O índice ",indice, " Agora guarda o valor ", valor, "!! ****")
 
-        escreva("\n1 - Para cadastrar mais valores.\n2 - Para voltar ao menu.  ")
-          leia(decidir)
+          escreva("\n1 - Para cadastrar mais valores.\n2 - Para voltar ao menu.  ")
+            leia(decidir)
 
-        se(decidir == 1){
-          opcao = 1
+          se(decidir == 1){
+            opcao = 1
+          }
+          senao se(decidir == 2){
+            menu = 1
+          }
+        
         }
-        senao se(decidir == 2){
-          menu = 1
+
+        enquanto(opcao==2){
+          opcao = 6
+
+          para(i=0;i<15;i++){
+            escreva(i,"º[", vetor[i], "]; ")
+          }
+          
+          escreva("\nQual índice você deseja somar?: ")
+            leia(indice)
+          escreva("\nQual o valor que deseja somar?: ")
+            leia(valor2)
+          
+          vetor[indice] = (vetor[indice] + valor2) 
+
+          escreva("**** O valor ", valor," foi somado ao índice ", indice, " ****")
+          
+          escreva("\n1 - Para somar mais valores.\n2 - Para voltar ao menu.  ")
+            leia(decidir)
+
+          se(decidir == 1){
+            opcao = 2
+          }
+          senao se(decidir == 2){
+            menu = 1
+          }
         }
-      
-      }
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     se(menu == 0){
       escreva("Até mais!")
     }
+
   }
 }
