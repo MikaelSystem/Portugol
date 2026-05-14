@@ -19,7 +19,8 @@ programa {
     escreva("'1' Para começar, '0' Para sair:  ")
       leia(menu)
 
-    se(menu == 1){
+    enquanto(menu == 1) {
+      menu = 2
       escreva("-----------------\n")
       escreva("1 - Cadastrar valor\n")
       escreva("2 - Somar a um valor\n")
@@ -31,30 +32,30 @@ programa {
       escreva("Digite a opção desejada:  ")
         leia(opcao)
 
-      se(opcao==1){
+      enquanto(opcao==1){
+        opcao = 2
+
         escreva("Qual dos índices de 1 a 15 você deseja cadastrar?:  ")
           leia(indice)
-        escreva("Qual valor você quer cadastrar?")
+        escreva("Qual valor você quer cadastrar?:  ")
           leia(valor)
         vetor[indice] = valor
         escreva("**** O índice ",indice, " Agora guarda o valor ", valor, "!! ****")
 
         escreva("\n1 - Para cadastrar mais valores.\n2 - Para voltar ao menu.  ")
           leia(decidir)
+
         se(decidir == 1){
-          escreva("[NOT FINISHED]")
+          opcao = 1
         }
-        se(decidir == 2){
-          opcao=1
+        senao se(decidir == 2){
+          menu = 1
         }
+      
       }
     }
-
     se(menu == 0){
       escreva("Até mais!")
     }
-
-    
-
   }
 }
