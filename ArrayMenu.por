@@ -20,6 +20,7 @@ programa {
       leia(menu)
 
     enquanto(menu == 1) {
+      limpa()
       menu = 2
       escreva("-----------------\n")
       escreva("1 - Cadastrar valor\n")
@@ -33,12 +34,14 @@ programa {
         leia(opcao)
 
         enquanto(opcao==1){
+          limpa()
           opcao = 6
 
           escreva("Qual dos índices de 0 a 15 você deseja cadastrar?:  ")
             leia(indice)
           escreva("Qual valor você quer cadastrar?:  ")
             leia(valor)
+          limpa()
           vetor[indice] = valor
           escreva("**** O índice ",indice, " Agora guarda o valor ", valor, "!! ****")
 
@@ -51,7 +54,6 @@ programa {
           senao se(decidir == 2){
             menu = 1
           }
-        
         }
 
         enquanto(opcao==2){
@@ -60,25 +62,42 @@ programa {
           para(i=0;i<15;i++){
             escreva(i,"º[", vetor[i], "]; ")
           }
-          
           escreva("\nQual índice você deseja somar?: ")
             leia(indice)
           escreva("\nQual o valor que deseja somar?: ")
             leia(valor2)
-          
-          vetor[indice] = (vetor[indice] + valor2) 
 
+          vetor[indice] = (vetor[indice] + valor2)
           escreva("**** O valor ", valor," foi somado ao índice ", indice, " ****")
           
           escreva("\n1 - Para somar mais valores.\n2 - Para voltar ao menu.  ")
             leia(decidir)
-
           se(decidir == 1){
             opcao = 2
           }
           senao se(decidir == 2){
             menu = 1
           }
+        }
+
+        enquanto(opcao==3){
+          opcao = 6
+
+          para(i=0;i<15;i++){
+            escreva(i,"º[", vetor[i], "]; ")
+          }
+          escreva("\nQual índice você deseja multiplicar?: ")
+            leia(indice)
+          escreva("\nPor quanto deseja multiplicá-lo?: ")
+            leia(valor)
+
+          vetor[indice] = (vetor[indice] * valor)
+          limpa()
+          para(i=0;i<15;i++){
+            escreva(i,"º[", vetor[i], "]; ")
+          }
+          escreva("\n**** O número ",valor, " foi multiplicado no índice ", indice, " ****")
+          
         }
     }
 
