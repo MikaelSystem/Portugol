@@ -1,32 +1,18 @@
-//Faça um programa que trabalhe com um vetor de tamanho 15. O programa deve
-//fornecer o seguinte menu:
-//a) Cadastrar valor: pede um índice e um valor para o usuário, insere o valor
-//digitado no índice informado.
-//b) Somar a um valor: pede um índice e um valor para o usuário, após isso, faz
-//uma soma do valor informado com o valor que existia no índice anteriormente.
-//c) Multiplicar a um valor: pede um índice e um valor para o usuário, após isso,
-//faz uma multiplicação do valor informado com o valor que existia no índice
-//anteriormente.
-//d) Incrementar a todos os valores: percorre todas as posições do vetor e
-//incrementa os valores em 1.
-//e) Listar todos os valores: imprime na tela todos os valores que existem no
-//vetor.
+programa
+{
+	
+	funcao inicio()
+	{
+	inteiro vetor[16], i = 0, menu = 1, opcao = 0, indice, valor = 0, valor2 = 0, decidir = 0, j = 0
 
-programa {
-  funcao inicio() {
-    inteiro vetor[15], i, menu = 2, opcao = 0, indice, valor, valor2, decidir = 0
- 
-    escreva("'1' Para começar, '0' Para sair:  ")
-      leia(menu)
-
-    enquanto(menu == 1) {
+ 	enquanto(menu == 1) {
       limpa()
       menu = 2
       escreva("-----------------\n")
       escreva("1 - Cadastrar valor\n")
       escreva("2 - Somar a um valor\n")
       escreva("3 - Multiplicar a um valor\n")
-      escreva("4 - Incrementar a todos os valores\n")
+      escreva("4 - Incrementar 1 a todos os valores\n")
       escreva("5 - Listar todos os valores\n")
       escreva("-----------------\n")
 
@@ -37,13 +23,29 @@ programa {
           limpa()
           opcao = 6
 
-          escreva("Qual dos índices de 0 a 15 você deseja cadastrar?:  ")
+          para(i=0;i<=15;i++){
+            escreva(i,"º[", vetor[i], "]; ")
+          }
+
+          escreva("\nQual dos índices de 0 a 15 você deseja cadastrar?:  ")
             leia(indice)
+            
+		enquanto(indice<0 ou indice>=16){
+			escreva("Índice inválido, somente de 0 a 15!:  ")
+		     	leia(indice)
+          }
+            
           escreva("Qual valor você quer cadastrar?:  ")
             leia(valor)
+
+             
+          
           limpa()
           vetor[indice] = valor
-          escreva("**** O índice ",indice, " Agora guarda o valor ", valor, "!! ****")
+          para(i=0;i<=15;i++){
+            escreva(i,"º[", vetor[i], "]; ")
+          }
+          escreva("\n**** O índice ",indice, " Agora guarda o valor ", valor, "!! ****")
 
           escreva("\n1 - Para cadastrar mais valores.\n2 - Para voltar ao menu.  ")
             leia(decidir)
@@ -58,17 +60,23 @@ programa {
 
         enquanto(opcao==2){
           opcao = 6
+          limpa()
 
-          para(i=0;i<15;i++){
+          para(i=0;i<=15;i++){
             escreva(i,"º[", vetor[i], "]; ")
           }
           escreva("\nQual índice você deseja somar?: ")
             leia(indice)
           escreva("\nQual o valor que deseja somar?: ")
             leia(valor2)
+            limpa()
 
           vetor[indice] = (vetor[indice] + valor2)
-          escreva("**** O valor ", valor," foi somado ao índice ", indice, " ****")
+          para(i=0;i<=15;i++){
+            escreva(i,"º[", vetor[i], "]; ")
+          }
+          
+          escreva("\n**** O valor ", valor," foi somado ao índice ", indice, " ****")
           
           escreva("\n1 - Para somar mais valores.\n2 - Para voltar ao menu.  ")
             leia(decidir)
@@ -81,9 +89,10 @@ programa {
         }
 
         enquanto(opcao==3){
+        	limpa()
           opcao = 6
 
-          para(i=0;i<15;i++){
+          para(i=0;i<=15;i++){
             escreva(i,"º[", vetor[i], "]; ")
           }
           escreva("\nQual índice você deseja multiplicar?: ")
@@ -93,42 +102,69 @@ programa {
 
           vetor[indice] = (vetor[indice] * valor)
           limpa()
-          para(i=0;i<15;i++){
+          para(i=0;i<=15;i++){
             escreva(i,"º[", vetor[i], "]; ")
           }
           escreva("\n**** O número ",valor, " foi multiplicado no índice ", indice, " ****")
+
+          escreva("\n1 - Para multiplicar mais valores.\n2 - Para voltar ao menu.  ")
+            leia(decidir)
+          se(decidir == 1){
+            opcao = 3
+          }
+          senao se(decidir == 2){
+            menu = 1
+          }
           
         }
-    }
 
+        enquanto(opcao==4){
+          opcao = 6
+          i=0
+          limpa()
 
+          para(i=0;i<=15;i++){
+            vetor[i] = vetor[i] + 1
+            escreva(i,"º[", vetor[i], "]; ")
+          }
+          
+          escreva("\nTodos os valores foram incrementados com 1")
 
+          escreva("\n1 - Para multiplicar mais valores.\n2 - Para voltar ao menu.  ")
+            leia(decidir)
+          se(decidir == 1){
+            opcao = 4
+          }
+          senao se(decidir == 2){
+            menu = 1
+          }
+        }
 
+        enquanto(opcao==5){
+        	opcao = 6
 
+        	para(i=0;i<=15;i++){
+            escreva(i,"º[", vetor[i], "]; ")
+          }
+        }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    se(menu == 0){
-      escreva("Até mais!")
-    }
-
-  }
-}
+         enquanto(opcao <= 0 ou opcao >6){
+         	opcao=6
+        	limpa()
+        	
+        	 escreva("-----------------\n")
+	      escreva("1 - Cadastrar valor\n")
+	      escreva("2 - Somar a um valor\n")
+	      escreva("3 - Multiplicar a um valor\n")
+	      escreva("4 - Incrementar 1 a todos os valores\n")
+	      escreva("5 - Listar todos os valores\n")
+	      escreva("-----------------\n")
+	      
+        	escreva("Opção incorreta, selecione de 1 a 5:  ")
+        	opcao=6
+        		leia(opcao)
+        	limpa()
+        }
+	}
+	}
+}		
