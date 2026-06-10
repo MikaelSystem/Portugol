@@ -11,7 +11,7 @@ programa
 		inteiro i, valor, contagem=0
 		
 		para(i=1;i<=vezes;i++){
-			valor = u.sorteia(0,6)
+			valor = u.sorteia(1,6)
 			
 			se(valor==6){
 				contagem++
